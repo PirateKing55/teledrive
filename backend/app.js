@@ -1,22 +1,23 @@
 import express from "express";
-import bodyParser from "body-parser";
 import morgan from "morgan";
-import { router } from "./routes/routes.js";
 import cors from "cors";
-
-const port = process.env.PORT || 3000;
+import { router } from "./routes/routes.js";
 
 const app = express();
+const port = process.env.PORT || 3000;
+
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(morgan("dev"));
 
-app.use("/v1", router);
+app.use("/api/v1", router);
 
-// Handling Errors
+// Global error handling middleware
 app.use((err, req, res, next) => {
-  console.log(err.stack);
-  res.status(500).send("Internal server error");
+  console.error(err.stack);
+  res.status(err.status || 500).json({ error: err.message || "Internal server error" });
 });
 
-app.listen(port, console.log(`Server Listening on ${port}`));
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});

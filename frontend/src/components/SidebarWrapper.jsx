@@ -106,7 +106,7 @@ export const SidebarWrapper = () => {
           animation: "gradientAnimation 5s ease-in-out infinite alternate",
         }}
       >
-        {collapsed ? "P" : "Pocket-Drive"}
+        {collapsed ? "T" : "Teledrive"}
       </h1>
       <FileUploadComponent collapsed={collapsed} />
       <input type="file" placeholder="NEW" style={{ display: "none" }}></input>

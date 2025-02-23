@@ -7,7 +7,7 @@ export const SearchBar = ({ onchange }) => {
       <input
         type="text"
         className="w-full rounded-xl h-12 border-none focus:border-transparent focus:outline-none"
-        placeholder="Search in Pocket-Drive"
+        placeholder="Search in Teledrive"
         onChange={onchange}
       ></input>
     </div>
